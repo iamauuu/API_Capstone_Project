@@ -91,6 +91,8 @@ body {
   color: #003a70;
   font-family: "Inter", sans-serif;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar {
@@ -105,7 +107,41 @@ body {
   display: flex;
   justify-content: space-between;
 }
+.navbar-mobile {
+  display: none;
+}
 
+.logo-mobile {
+  a {
+    display: flex;
+    height: 100%;
+  }
+}
+
+.nav-menu-mobile {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.menu-mobile {
+  width: 100%;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+  }
+}
+
+.menu-mobile:hover {
+  background-color: #003261;
+}
+
+.nav-left-mobile {
+  display: flex;
+  align-items: center;
+}
 .nav {
   height: 100%;
   display: flex;
@@ -115,7 +151,6 @@ body {
 .logo img {
   height: 55px;
   filter: drop-shadow(5px 5px 5px #222);
-
   animation: capcha 1.2s ease-out infinite;
 }
 
@@ -165,6 +200,10 @@ body {
   }
 }
 
+.menu:hover {
+  background-color: #003261;
+}
+
 .imgheader {
   padding: 40px 64px;
   width: 100%;
@@ -181,6 +220,10 @@ body {
   column-gap: 20px;
   /* max-width: 400px;
   width: 100%; */
+}
+
+.nav-right-mobile {
+  column-gap: 20px;
 }
 
 .search-bar {
@@ -209,6 +252,49 @@ body {
   font-size: 14px;
 }
 
+.sm-search-bar,
+.menu-bar {
+  display: none;
+}
+
+.sm-search-bar {
+  max-width: 300px;
+  width: 100%;
+  align-items: center;
+  border-radius: 30px;
+  background-color: #f7ebbe;
+  form {
+    display: flex;
+  }
+}
+
+.search-btn-mobile {
+  background-color: #f7ebbe;
+  border-radius: 0 30px 30px 0;
+  padding: 0 15px 0 10px;
+}
+
+.search-bar-mobile {
+  border-radius: 30px 0 0 30px;
+}
+
+.menu-bar {
+  width: 100%;
+  height: 100vh;
+  background-color: #003a70;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  background-color: #003a70a2;
+  backdrop-filter: blur(10px);
+  a {
+    height: 72px;
+    align-self: end;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+  }
+}
 .body-container-padding {
   padding: 64px;
 }
@@ -239,6 +325,7 @@ body {
   height: 202px;
   width: 100%;
   background-color: #003a70;
+  position: relative;
 }
 
 /* -----------scroll bar style--------------- */
@@ -316,10 +403,6 @@ a {
   text-decoration: none;
 }
 
-.footer {
-  position: relative;
-}
-
 .footer-contact {
   display: flex;
   column-gap: 20px;
@@ -338,23 +421,50 @@ a {
   padding: 0 72px;
 }
 
+.svg-nav {
+  display: none;
+  column-gap: 20px;
+}
+
 @media (max-width: 1048px) {
   .navbar {
     padding: 0 16px;
   }
 
+  .svg-nav {
+    display: flex;
+    align-items: center;
+  }
+
   .random-data {
     flex-direction: column;
   }
-
+  .navbar-pc {
+    display: none;
+  }
+  .navbar-mobile {
+    display: flex;
+  }
   .pokeImg {
     width: 100%;
+    font-size: 24px;
   }
   .pokeData {
     width: 100%;
+    padding: 30px;
+    border: none;
   }
-
   .text-footer {
     padding: 0 16px;
+  }
+  .imgheader {
+    padding: 0;
+    margin-top: 50px;
+  }
+  .logo img {
+    height: 44px;
+  }
+  .head-name {
+    font-size: 30px;
   }
 }
