@@ -7,86 +7,105 @@
                     <a href="/"><img src="./images/Poké_Ball_icon.svg.png" alt="Pokeball icon"></a>
                 </div>
                 <div class="nav-menu">
-                    <div class="pokedex menu">
-                        <a href="#">Pokedex</a>
+                    <div class="menu"><a href="#">Pokedex</a>
                     </div>
-                    <div class="pokedex menu"><a href="#">Pokedex</a>
+                    <div class="menu"><a href="#">Pokedex</a>
                     </div>
-                    <div class="pokedex menu"><a href="#">Pokedex</a>
+                    <div class="menu"><a href="#">Pokedex</a>
                     </div>
-                    <div class="pokedex menu"><a href="#">Pokedex</a>
+                    <div class="menu"><a href="#">Pokedex</a>
                     </div>
                 </div>
             </div>
             <div class="nav nav-right">
                 <form action="/search" method="post">
-                    <input type="text" required name="name" class="search-bar">
+                    <input type="text" required name="name" class="search-bar" size="30">
                     <button type="submit" class="search-btn">Search</button>
                 </form>
             </div>
         </div>
+
         <div class="body-container-padding">
             <div class="body-container-adjustmargin">
                 <div class="imgheader">
                     <img src="./images/Pokemon-Logo.png" alt="Pokemon">
                 </div>
                 <% if(locals.information) { %>
-                    <div class="random-data">
-                        <div class="pokeImg">
-                            <div class="name">
-                                <p>
-                                    <%=information.name%>
-                                </p>
-                            </div>
-                            <div class="pokeImg-1">
-                                <% if(information.sprites.other['official-artwork'].front_default!==null) { %>
-                                    <img src="<%=information.sprites.other['official-artwork'].front_default %>" alt="Image of <%=
+                    <div class="data-container">
+                        <div class="head-name">
+                            <h1>
+                                <%= information.name %>
+                            </h1>
+                        </div>
+                        <div class="random-data">
+                            <div class="pokeImg">
+                                <div class="name">
+                                    <p>
+                                        <%=information.name%>
+                                    </p>
+                                </div>
+                                <div class="pokeImg-1">
+                                    <% if(information.sprites.other['official-artwork'].front_default!==null) { %>
+                                        <img src="<%=information.sprites.other['official-artwork'].front_default %>"
+                                            alt="Image of <%=
                                         information.name %>">
-                                    <% } else { %>
-                                        <img src="./images/No_image_available.svg.webp" alt="Sorry, there is no <%=
+                                        <% } else { %>
+                                            <img src="./images/No_image_available.svg.webp" alt="Sorry, there is no <%=
                                         information.name %> image in data storage">
-                                        <% } %>
-                            </div>
-                            <div class="name">
-                                <p>Shiny <%=information.name%>
-                                </p>
-                            </div>
-                            <div class="pokeImg-2">
-                                <% if(information.sprites.other['official-artwork'].front_shiny!==null) { %>
-                                    <img src="<%=information.sprites.other['official-artwork'].front_shiny %>" alt="Image of shiny<%=
+                                            <% } %>
+                                </div>
+                                <div class="name">
+                                    <p>Shiny <%=information.name%>
+                                    </p>
+                                </div>
+                                <div class="pokeImg-2">
+                                    <% if(information.sprites.other['official-artwork'].front_shiny!==null) { %>
+                                        <img src="<%=information.sprites.other['official-artwork'].front_shiny %>" alt="Image of shiny<%=
                                         information.name %>">
-                                    <% } else { %>
-                                        <img src="./images/No_image_available.svg.webp" alt="Sorry, there is no shiny <%=
+                                        <% } else { %>
+                                            <img src="./images/No_image_available.svg.webp" alt="Sorry, there is no shiny <%=
                                         information.name %> image in data storage">
-                                        <% } %>
+                                            <% } %>
+                                </div>
+                            </div>
+
+                            <div class="pokeData">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus quod at quidem
+                                veritatis
+                                omnis nam praesentium libero hic, obcaecati, impedit, nulla harum aut facilis sint! Illo
+                                eum
+                                beatae expedita pariatur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure
+                                placeat debitis neque aliquid dignissimos maxime voluptas ipsam necessitatibus quas
+                                expedita
+                                nulla explicabo labore, asperiores harum quis, consectetur laudantium? Accusantium,
+                                architecto.a
+                                Reiciendis, itaque aperiam deleniti ullam labore veritatis dicta consectetur repellat,
+                                magni
+                                voluptatum neque? Officia est quo at, totam quae magni commodi, delectus possimus sed
+                                inventore rem esse ex nemo doloribus.
+                                A beatae dolores reiciendis, hic accusamus porro. Ipsa veniam officiis porro in maiores
+                                dignissimos dolor alias nobis dolores. Voluptatem ad quis eaque molestias obcaecati
+                                porro
+                                iusto ipsam pariatur cupiditate doloribus.
+                                Eligendi doloremque, laboriosam vitae dolor corrupti quis fuga repudiandae, id, quo
+                                blanditiis tempore eaque in. Voluptas eos, architecto inventore delectus praesentium
+                                saepe
+                                at quis perspiciatis molestiae, ut alias, iusto tempora!
+                                Aut itaque optio dicta voluptas perspiciatis exercitationem dignissimos totam. Adipisci
+                                sit
+                                laborum pariatur voluptates hic asperiores unde? Officiis debitis alias delectus totam
+                                unde
+                                aperiam iste quis, aliquid ipsum cum deserunt.
+                                In explicabo ut ipsam perspiciatis obcaecati aspernatur rem, enim nulla. Blanditiis
+                                sequi,
+                                pariatur veniam nostrum omnis iusto ipsa vitae perferendis, similique sit cum nam
+                                dignissimos maxime fugiat suscipit. Sed, quisquam!
+                                Cumque quis quaerat aliquid, vitae non repellat eos minima voluptatum consectetur maxime
+                                eveniet, cupiditate hic nemo unde beatae amet doloremque incidunt itaque earum nesciunt
+                                soluta quas ea quidem rem. Sequi!
                             </div>
                         </div>
-
-                        <div class="pokeData">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus quod at quidem veritatis
-                            omnis nam praesentium libero hic, obcaecati, impedit, nulla harum aut facilis sint! Illo eum
-                            beatae expedita pariatur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure
-                            placeat debitis neque aliquid dignissimos maxime voluptas ipsam necessitatibus quas expedita
-                            nulla explicabo labore, asperiores harum quis, consectetur laudantium? Accusantium,
-                            architecto.a
-                            Reiciendis, itaque aperiam deleniti ullam labore veritatis dicta consectetur repellat, magni
-                            voluptatum neque? Officia est quo at, totam quae magni commodi, delectus possimus sed
-                            inventore rem esse ex nemo doloribus.
-                            A beatae dolores reiciendis, hic accusamus porro. Ipsa veniam officiis porro in maiores
-                            dignissimos dolor alias nobis dolores. Voluptatem ad quis eaque molestias obcaecati porro
-                            iusto ipsam pariatur cupiditate doloribus.
-                            Eligendi doloremque, laboriosam vitae dolor corrupti quis fuga repudiandae, id, quo
-                            blanditiis tempore eaque in. Voluptas eos, architecto inventore delectus praesentium saepe
-                            at quis perspiciatis molestiae, ut alias, iusto tempora!
-                            Aut itaque optio dicta voluptas perspiciatis exercitationem dignissimos totam. Adipisci sit
-                            laborum pariatur voluptates hic asperiores unde? Officiis debitis alias delectus totam unde
-                            aperiam iste quis, aliquid ipsum cum deserunt.
-                            In explicabo ut ipsam perspiciatis obcaecati aspernatur rem, enim nulla. Blanditiis sequi,
-                            pariatur veniam nostrum omnis iusto ipsa vitae perferendis, similique sit cum nam
-                            dignissimos maxime fugiat suscipit. Sed, quisquam!
-                            Cumque quis quaerat aliquid, vitae non repellat eos minima voluptatum consectetur maxime
-                            eveniet, cupiditate hic nemo unde beatae amet doloremque incidunt itaque earum nesciunt
-                            soluta quas ea quidem rem. Sequi!
+                        <div class="foot-bg">
                         </div>
                     </div>
                     <div class="random-btn-form">
@@ -95,7 +114,7 @@
                         </form>
                     </div>
                     <% } else { %>
-                        <div class="random-btn-form index-random-btn">
+                        <div class="random-btn-form">
                             <form action="/random" method="post">
                                 <button type="submit" class="random-btn">Random Pokemon!</button>
                             </form>

@@ -29,13 +29,13 @@ app.post("/search", async (req, res) => {
 
 app.post("/random", async (req, res) => {
   try {
-    // pokemon have 1302 number, the id number is between 1-1025, 10000-10277
+    // pokemon have 1302 number, the id number is between 1-1025, 10001-10277
     // random id of pokemon
     let randomPokemonNumber = Math.floor(Math.random() * 1302);
 
     //if number is over than 1025, increase the number to start at 10000
     if (randomPokemonNumber > 1025) {
-      randomPokemonNumber = randomPokemonNumber + 8974;
+      randomPokemonNumber = randomPokemonNumber + 8975;
     }
     // get pokemon data from random number
     const response = await axios.get(
