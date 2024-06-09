@@ -6,12 +6,13 @@ const app = express();
 const port = 3000;
 const apiLink = "https://pokeapi.co/api/v2/";
 let result;
+let pokemonData;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", { information: result });
+  res.render("index.ejs", { information: result, data: pokemonData });
   //reset result
   result = "";
 });
@@ -42,6 +43,10 @@ app.post("/random", async (req, res) => {
       apiLink + "pokemon/" + randomPokemonNumber
     );
     result = response.data;
+
+    const pokeData = await axios.get(response.data.species.url);
+    pokemonData = pokeData.data;
+    console.log(pokemonData);
     res.redirect("/");
   } catch (error) {
     res.send(error.message);

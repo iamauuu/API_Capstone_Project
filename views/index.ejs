@@ -19,7 +19,8 @@
             </div>
             <div class="nav nav-right">
                 <form action="/search" method="post">
-                    <input type="text" required name="name" class="search-bar" size="30">
+                    <input type="text" required name="name" class="search-bar" size="30"
+                        placeholder="Enter pokemon name, id..">
                     <button type="submit" class="search-btn">Search</button>
                 </form>
             </div>
@@ -33,7 +34,8 @@
             <div class="nav nav-right-mobile">
                 <div class="sm-search-bar">
                     <form action="/search" method="post">
-                        <input type="text" required name="name" class="search-bar search-bar-mobile">
+                        <input type="text" required name="name" class="search-bar search-bar-mobile"
+                            placeholder="Enter pokemon name, id..">
                         <button type="submit" class="search-btn search-btn-mobile"><svg
                                 xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                                 fill="#003a70">
@@ -77,7 +79,7 @@
             </div>
         </div>
         </div>
-        <div class="body-container-padding">
+        <div class="body-container-padding" onclick=disableSearch()>
             <div class="body-container-adjustmargin">
                 <div class="imgheader">
                     <img src="./images/Pokemon-Logo.png" alt="Pokemon">
@@ -122,39 +124,39 @@
                             </div>
 
                             <div class="pokeData">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus quod at quidem
-                                veritatis
-                                omnis nam praesentium libero hic, obcaecati, impedit, nulla harum aut facilis sint! Illo
-                                eum
-                                beatae expedita pariatur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure
-                                placeat debitis neque aliquid dignissimos maxime voluptas ipsam necessitatibus quas
-                                expedita
-                                nulla explicabo labore, asperiores harum quis, consectetur laudantium? Accusantium,
-                                architecto.a
-                                Reiciendis, itaque aperiam deleniti ullam labore veritatis dicta consectetur repellat,
-                                magni
-                                voluptatum neque? Officia est quo at, totam quae magni commodi, delectus possimus sed
-                                inventore rem esse ex nemo doloribus.
-                                A beatae dolores reiciendis, hic accusamus porro. Ipsa veniam officiis porro in maiores
-                                dignissimos dolor alias nobis dolores. Voluptatem ad quis eaque molestias obcaecati
-                                porro
-                                iusto ipsam pariatur cupiditate doloribus.
-                                Eligendi doloremque, laboriosam vitae dolor corrupti quis fuga repudiandae, id, quo
-                                blanditiis tempore eaque in. Voluptas eos, architecto inventore delectus praesentium
-                                saepe
-                                at quis perspiciatis molestiae, ut alias, iusto tempora!
-                                Aut itaque optio dicta voluptas perspiciatis exercitationem dignissimos totam. Adipisci
-                                sit
-                                laborum pariatur voluptates hic asperiores unde? Officiis debitis alias delectus totam
-                                unde
-                                aperiam iste quis, aliquid ipsum cum deserunt.
-                                In explicabo ut ipsam perspiciatis obcaecati aspernatur rem, enim nulla. Blanditiis
-                                sequi,
-                                pariatur veniam nostrum omnis iusto ipsa vitae perferendis, similique sit cum nam
-                                dignissimos maxime fugiat suscipit. Sed, quisquam!
-                                Cumque quis quaerat aliquid, vitae non repellat eos minima voluptatum consectetur maxime
-                                eveniet, cupiditate hic nemo unde beatae amet doloremque incidunt itaque earum nesciunt
-                                soluta quas ea quidem rem. Sequi!
+                                <p>name : <%= data.name %>
+                                </p>
+                                <p>National No. : <%= %>
+                                </p>
+                                <p>Generation : <%= %>
+                                </p>
+                                <p>Type : <%= %>
+                                </p>
+                                <p>Height : <%= %>
+                                </p>
+                                <p>Weight : <%= %>
+                                </p>
+                                <p>Species : <%= %>
+                                </p>
+
+                                <div class="base-stat">
+                                    <p>HP : <%= information.stats[0].base_stat %>
+                                    </p>
+                                    <p>Attack : <%= information.stats[1].base_stat %>
+                                    </p>
+                                    <p>Defense : <%= information.stats[2].base_stat %>
+                                    </p>
+                                    <p>Sp.Atk : <%= information.stats[3].base_stat %>
+                                    </p>
+                                    <p>Sp.Def : <%= information.stats[4].base_stat %>
+                                    </p>
+                                    <p>Speed : <%= information.stats[5].base_stat %>
+                                    </p>
+                                </div>
+
+                                <div class="evolution-chart">
+
+                                </div>
                             </div>
                         </div>
                         <div class="foot-bg">
@@ -162,7 +164,7 @@
                     </div>
                     <div class="random-btn-form">
                         <form action="/random" method="post">
-                            <button type="submit" class="random-btn">Random Again!</button>
+                            <button type="submit" class="random-btn">Random Pokemon!</button>
                         </form>
                     </div>
                     <% } else { %>
