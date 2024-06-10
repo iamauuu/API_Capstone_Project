@@ -95,67 +95,187 @@
                             <div class="pokeImg">
                                 <div class="name">
                                     <p>
-                                        <%=information.name%>
+                                        <%=data.name%>
                                     </p>
                                 </div>
                                 <div class="pokeImg-1">
                                     <% if(information.sprites.other['official-artwork'].front_default!==null) { %>
                                         <img src="<%=information.sprites.other['official-artwork'].front_default %>"
                                             alt="Image of <%=
-                                        information.name %>">
+                                        data.name %>">
                                         <% } else { %>
                                             <img src="./images/No_image_available.svg.webp" alt="Sorry, there is no <%=
-                                        information.name %> image in data storage">
+                                        data.name %> image in data storage">
                                             <% } %>
                                 </div>
                                 <div class="name">
-                                    <p>Shiny <%=information.name%>
+                                    <p>Shiny <%=data.name%>
                                     </p>
                                 </div>
                                 <div class="pokeImg-2">
                                     <% if(information.sprites.other['official-artwork'].front_shiny!==null) { %>
                                         <img src="<%=information.sprites.other['official-artwork'].front_shiny %>" alt="Image of shiny<%=
-                                        information.name %>">
+                                        data.name %>">
                                         <% } else { %>
                                             <img src="./images/No_image_available.svg.webp" alt="Sorry, there is no shiny <%=
-                                        information.name %> image in data storage">
+                                        data.name %> image in data storage">
                                             <% } %>
                                 </div>
                             </div>
 
                             <div class="pokeData">
-                                <p>name : <%= data.name %>
-                                </p>
-                                <p>National No. : <%= %>
-                                </p>
-                                <p>Generation : <%= %>
-                                </p>
-                                <p>Type : <%= %>
-                                </p>
-                                <p>Height : <%= %>
-                                </p>
-                                <p>Weight : <%= %>
-                                </p>
-                                <p>Species : <%= %>
-                                </p>
-
+                                <div class="pokemon-informations">
+                                    <p class="text-subhead">Information</p>
+                                    <p><span class="bold">name :</span>
+                                        <%= data.name %>
+                                    </p>
+                                    <p><span class="bold">National No. :</span>
+                                        <%= data.id %>
+                                    </p>
+                                    <p><span class="bold">Generation :</span>
+                                        <%= data.generation['name'] %>
+                                    </p>
+                                    <p><span class="bold">Type :</span>
+                                        <% information.types.forEach(type=>{ %>
+                                            <span class="<%= type.type.name %>">
+                                                <%= type.type.name %>
+                                            </span>
+                                            <% }); %>
+                                    </p>
+                                    <p><span class="bold">Height :</span>
+                                        <%= information.height %> m.
+                                    </p>
+                                    <p><span class="bold">Weight :</span>
+                                        <%= information.weight/10 %> kg.
+                                    </p>
+                                    <p><span class="bold">Species :</span>
+                                        <%= %>
+                                    </p>
+                                    <p><span class="bold">Ability :</span>
+                                        <% information.abilities.forEach((ability, index)=>{ %>
+                                            <!-- if the ability is not the last. add , -->
+                                            <% if (index===information.abilities.length-1) { %>
+                                                <%= ability.ability.name %>
+                                                    <% } else { %>
+                                                        <%= ability.ability.name %>,
+                                                            <% } %>
+                                                                <% }); %>
+                                    </p>
+                                    <p><span class="bold">Shape :</span>
+                                        <% if (data.shape !==null) { %>
+                                            <%= data.shape['name']%>
+                                                <% } else { %>
+                                                    -
+                                                    <% } %>
+                                    </p>
+                                </div>
                                 <div class="base-stat">
-                                    <p>HP : <%= information.stats[0].base_stat %>
+                                    <p class="text-subhead extra-padding">Stats</p>
+                                    <p><span class="bold">HP :</span>
+                                        <%= information.stats[0].base_stat %>
                                     </p>
-                                    <p>Attack : <%= information.stats[1].base_stat %>
+                                    <p><span class="bold">Attack :</span>
+                                        <%= information.stats[1].base_stat %>
                                     </p>
-                                    <p>Defense : <%= information.stats[2].base_stat %>
+                                    <p><span class="bold">Defense :</span>
+                                        <%= information.stats[2].base_stat %>
                                     </p>
-                                    <p>Sp.Atk : <%= information.stats[3].base_stat %>
+                                    <p><span class="bold">Sp.Atk :</span>
+                                        <%= information.stats[3].base_stat %>
                                     </p>
-                                    <p>Sp.Def : <%= information.stats[4].base_stat %>
+                                    <p><span class="bold">Sp.Def :</span>
+                                        <%= information.stats[4].base_stat %>
                                     </p>
-                                    <p>Speed : <%= information.stats[5].base_stat %>
+                                    <p><span class="bold">Speed :</span>
+                                        <%= information.stats[5].base_stat %>
                                     </p>
                                 </div>
 
-                                <div class="evolution-chart">
+                                <!-- if there is evolution form , show evolution-chart -->
 
+                                <div class="evolution-chart">
+                                    <p class="text-subhead extra-padding">Evolutions</p>
+                                    <div class="evo-box-1">
+                                        <% if (evo.chain.evolves_to.length !==0) { %>
+                                            <div class="<%= evo.chain.species.name %>">
+                                                <form action="/search" method="post">
+                                                    <button name="name" value="<%= evo.chain.species.name %>"
+                                                        class="evo-btn">
+                                                        <%= evo.chain.species.name %>
+                                                    </button>
+                                                </form>
+
+                                            </div>
+                                            <div class="evo-box-2">
+                                                <% evo.chain.evolves_to.forEach((evo, index)=> { %>
+                                                    <div class="evo-box-3">
+                                                        <div class="evo-box-4">
+                                                            <form action="/search" method="post">
+                                                                <button name="name" value="<%= evo.species.name %>"
+                                                                    class="evo-btn">
+                                                                    <%= evo.species.name %>
+                                                                </button>
+                                                            </form>
+
+                                                        </div>
+                                                        <% if (evo.evolves_to.length !==0) { %>
+                                                            <div class="evo-box-5">
+                                                                <% evo.evolves_to.forEach((evo1, index)=> {%>
+                                                                    <div class="evo-box-6">
+                                                                        <form action="/search" method="post">
+                                                                            <button name="name"
+                                                                                value="<%= evo1.species.name %>"
+                                                                                class="evo-btn">
+                                                                                <%= evo1.species.name %>
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                    <% }); %>
+                                                            </div>
+                                                            <% } %>
+                                                    </div>
+
+                                                    <% }); %>
+                                            </div>
+
+                                            <% } else { %>
+                                                This pokemon have no evolution.
+                                                <% } %>
+                                    </div>
+                                </div>
+
+                                <div class="languages-names">
+                                    <!-- after 1010, pokemons don't have 10 language name, so if there is no 10 name, don't show anything -->
+                                    <% if (data.names[10] !==undefined) { %>
+                                        <p class="text-subhead extra-padding">Other languages</p>
+                                        <p><span class="bold">English :</span>
+                                            <%= data.names[8].name%>
+                                        </p>
+                                        <p><span class="bold">Japanese :</span>
+                                            <%= data.names[9].name%> (<%= data.names[1].name%>)
+                                        </p>
+                                        <p><span class="bold">German :</span>
+                                            <%= data.names[5].name%>
+                                        </p>
+                                        <p><span class="bold">French :</span>
+                                            <%= data.names[4].name%>
+                                        </p>
+                                        <p><span class="bold">Italian :</span>
+                                            <%= data.names[7].name%>
+                                        </p>
+                                        <p><span class="bold">Spanish :</span>
+                                            <%= data.names[6].name%>
+                                        </p>
+                                        <p><span class="bold">Korean :</span>
+                                            <%= data.names[2].name%>
+                                        </p>
+                                        <p><span class="bold">Chinese (Simplified) :</span>
+                                            <%= data.names[10].name%>
+                                        </p>
+                                        <p><span class="bold">Chinese (Traditional) :</span>
+                                            <%= data.names[3].name%>
+                                        </p>
+                                        <% } %>
                                 </div>
                             </div>
                         </div>
