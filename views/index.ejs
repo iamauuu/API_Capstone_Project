@@ -95,7 +95,7 @@
                             <div class="pokeImg">
                                 <div class="name">
                                     <p>
-                                        <%=data.name%>
+                                        <%=information.name%>
                                     </p>
                                 </div>
                                 <div class="pokeImg-1">
@@ -109,7 +109,7 @@
                                             <% } %>
                                 </div>
                                 <div class="name">
-                                    <p>Shiny <%=data.name%>
+                                    <p>Shiny <%=information.name%>
                                     </p>
                                 </div>
                                 <div class="pokeImg-2">
@@ -121,13 +121,33 @@
                                         data.name %> image in data storage">
                                             <% } %>
                                 </div>
+                                <% if (data.varieties.length> 1) { %>
+                                    <div class="varieties-img-slider">
+                                        <% data.varieties.forEach((data, index)=> { %>
+                                            <% if (varieties[index] !==null) { %>
+                                                <div class="name">
+                                                    <p>
+                                                        <%=varietiesname[index]%>
+                                                    </p>
+                                                </div>
+                                                <div class="pokeImg-3-slider">
+                                                    <div class="slides">
+                                                        <img src="<%= varieties[index] %>" alt="<%=data.pokemon.name%>">
+                                                    </div>
+                                                </div>
+                                                <% } %>
+                                                    <% }); %>
+                                                        <button class="prev" onclick=prevSlide()>&#10094</button>
+                                                        <button class="next" onclick=nextSlide()>&#10095</button>
+                                    </div>
+                                    <% } %>
                             </div>
 
                             <div class="pokeData">
                                 <div class="pokemon-informations">
                                     <p class="text-subhead">Information</p>
                                     <p><span class="bold">name :</span>
-                                        <%= data.name %>
+                                        <%= information.name %>
                                     </p>
                                     <p><span class="bold">National No. :</span>
                                         <%= data.id %>

@@ -9,6 +9,8 @@ const apiLink = "https://pokeapi.co/api/v2/";
 let result;
 let pokemonData;
 let evoData;
+let pokeVarieties = [];
+let pokeVarietiesName = [];
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,9 +20,15 @@ app.get("/", (req, res) => {
     information: result,
     data: pokemonData,
     evo: evoData,
+    varieties: pokeVarieties,
+    varietiesname: pokeVarietiesName,
   });
   //reset result
   result = "";
+  pokemonData = "";
+  evoData = "";
+  pokeVarieties = [];
+  pokeVarietiesName = [];
 });
 
 app.post("/search", async (req, res) => {
@@ -31,6 +39,31 @@ app.post("/search", async (req, res) => {
       apiLink + "pokemon-species/" + pokemonName
     );
     pokemonData = pokeData.data;
+    //collect pokemon varieties from pokemon data to pokeVarieties,pokeVarietiesName
+    pokemonData.varieties.forEach((varietie) => {
+      pokeVarietiesName.push(varietie.pokemon.name);
+    });
+    //use pokemon varietie names to search for pic
+
+    for (let i = 0; i < pokeVarietiesName.length; i++) {
+      const pokeVarie = await axios.get(
+        apiLink + "pokemon/" + pokeVarietiesName[i]
+      );
+      pokeVarieties.push(
+        pokeVarie.data.sprites.other["official-artwork"].front_default
+      );
+    }
+
+    // pokeVarietiesName.forEach((name) => {
+    //   const pokeVarie = app.get(apiLink + "pokemon/" + name);
+    //   pokeVarieties.push(
+    //     pokeVarie.data.sprites.other["official-artwork"].front_default
+    //   );
+    // });
+
+    console.log(pokeVarieties);
+    console.log(pokeVarietiesName);
+
     //get from api/pokemon/:id
     const response = await axios.get(apiLink + "pokemon/" + pokemonData.id);
     result = response.data;
@@ -63,6 +96,21 @@ app.post("/random", async (req, res) => {
     //get from api/pokemon-species/:id
     const pokeData = await axios.get(result.species.url);
     pokemonData = pokeData.data;
+    //collect pokemon varieties from pokemon data to pokeVarieties,pokeVarietiesName
+    pokemonData.varieties.forEach((varietie) => {
+      pokeVarietiesName.push(varietie.pokemon.name);
+    });
+    //use pokemon varietie names to search for pic
+
+    for (let i = 0; i < pokeVarietiesName.length; i++) {
+      const pokeVarie = await axios.get(
+        apiLink + "pokemon/" + pokeVarietiesName[i]
+      );
+      pokeVarieties.push(
+        pokeVarie.data.sprites.other["official-artwork"].front_default
+      );
+    }
+
     //get from api/evolution-chain/:id
     const pokeEvo = await axios.get(pokemonData.evolution_chain.url);
     evoData = pokeEvo.data;

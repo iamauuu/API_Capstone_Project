@@ -393,6 +393,17 @@ body {
   }
 }
 
+.pokeImg-3-slider {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  img {
+    width: 100%;
+    /* display: none; */
+  }
+}
+
 .pokeData {
   width: 70%;
   padding: 15px 100px 35px 100px;
