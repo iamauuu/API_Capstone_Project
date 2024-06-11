@@ -26,12 +26,14 @@ app.get("/", (req, res) => {
 app.post("/search", async (req, res) => {
   let pokemonName = req.body.name;
   try {
-    //get from api/pokemon/:id
-    const response = await axios.get(apiLink + "pokemon/" + pokemonName);
-    result = response.data;
     //get from api/pokemon-species/:id
-    const pokeData = await axios.get(result.species.url);
+    const pokeData = await axios.get(
+      apiLink + "pokemon-species/" + pokemonName
+    );
     pokemonData = pokeData.data;
+    //get from api/pokemon/:id
+    const response = await axios.get(apiLink + "pokemon/" + pokemonData.id);
+    result = response.data;
     //get from api/evolution-chain/:id
     const pokeEvo = await axios.get(pokemonData.evolution_chain.url);
     evoData = pokeEvo.data;
