@@ -59,6 +59,36 @@
             document.querySelector(".sm-search-bar").style.display = "none"
             document.querySelector(".search-svg").style.display = "block"
         }
+
+        const imgSlider = document.querySelectorAll(".varieties-img-slider .pokeImg-3-slider");
+        let counter = 0;
+
+        imgSlider[counter].classList.add("displaySlide")
+
+        function showSlide(index) {
+            if (counter < 0) {
+                counter = imgSlider.length - 1;
+            } else if (counter >= imgSlider.length) {
+                counter = 0;
+            }
+            imgSlider.forEach(slide => {
+                slide.classList.remove("displaySlide")
+            });
+            imgSlider[counter].classList.add("displaySlide");
+        }
+
+        function prevSlide() {
+            counter--;
+            showSlide(counter);
+            console.log(counter);
+        }
+
+        function nextSlide() {
+            counter++;
+            showSlide(counter);
+            console.log(counter);
+        }
+
     </script>
 </footer>
 

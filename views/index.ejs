@@ -121,22 +121,28 @@
                                         data.name %> image in data storage">
                                             <% } %>
                                 </div>
+
+                                <!-- pokemon varieties image slider -->
                                 <% if (data.varieties.length> 1) { %>
+                                    <div class="name varieties-name">
+                                        <p>Varieties</p>
+                                    </div>
                                     <div class="varieties-img-slider">
                                         <% data.varieties.forEach((data, index)=> { %>
                                             <% if (varieties[index] !==null) { %>
-                                                <div class="name">
-                                                    <p>
-                                                        <%=varietiesname[index]%>
-                                                    </p>
-                                                </div>
                                                 <div class="pokeImg-3-slider">
+                                                    <div class="name">
+                                                        <p>
+                                                            <%=varietiesname[index]%>
+                                                        </p>
+                                                    </div>
                                                     <div class="slides">
                                                         <img src="<%= varieties[index] %>" alt="<%=data.pokemon.name%>">
                                                     </div>
                                                 </div>
                                                 <% } %>
                                                     <% }); %>
+
                                                         <button class="prev" onclick=prevSlide()>&#10094</button>
                                                         <button class="next" onclick=nextSlide()>&#10095</button>
                                     </div>
@@ -167,9 +173,6 @@
                                     </p>
                                     <p><span class="bold">Weight :</span>
                                         <%= information.weight/10 %> kg.
-                                    </p>
-                                    <p><span class="bold">Species :</span>
-                                        <%= %>
                                     </p>
                                     <p><span class="bold">Ability :</span>
                                         <% information.abilities.forEach((ability, index)=>{ %>
